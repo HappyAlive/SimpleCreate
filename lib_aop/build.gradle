@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.YourUsername'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+    implementation 'com.squareup:javapoet:1.8.0'
+}
+sourceSets {//指定对应文件目录
+    main {
+        java.srcDirs = ['src']
+    }
+}
+tasks.withType(JavaCompile) {//解决build警告：编码GBK的不可映射字符
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
